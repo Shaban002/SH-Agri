@@ -1,0 +1,8 @@
+{
+  "name": "SH-Agri",
+  "description": "منصة المهندس والمساعد الزراعي الذكي في مصر - إرشاد وتسميد ومكافحة وإدارة مزرعة",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
