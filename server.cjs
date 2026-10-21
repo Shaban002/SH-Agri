@@ -3,20 +3,22 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
-const ROOT = __dirname;
+const DIST_DIR = path.join(__dirname, 'dist');
+const HAS_DIST = fs.existsSync(path.join(DIST_DIR, 'index.html'));
+const ROOT = HAS_DIST ? DIST_DIR : __dirname;
 
 // Comprehensive MIME type mapping
 // Zero-dependency replacement for 'mime-types'
 const MIME_TYPES = {
   // Text / Web Standard
-  '.html': 'text/html',
-  '.htm': 'text/html',
-  '.js': 'text/javascript',
-  '.mjs': 'text/javascript',
-  '.css': 'text/css',
-  '.txt': 'text/plain',
-  '.csv': 'text/csv',
-  '.json': 'application/json',
+  '.html': 'text/html; charset=utf-8',
+  '.htm': 'text/html; charset=utf-8',
+  '.js': 'text/javascript; charset=utf-8',
+  '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.csv': 'text/csv; charset=utf-8',
+  '.json': 'application/json; charset=utf-8',
   '.map': 'application/json',
   '.xml': 'application/xml',
 
@@ -85,17 +87,26 @@ const server = http.createServer(async (req, res) => {
     const chunks = [];
     for await (const chunk of req) chunks.push(chunk);
     const bodyObj = JSON.parse(Buffer.concat(chunks).toString('utf-8') || '{}');
-    const rawModel = bodyObj.model || 'gemini-3-flash-preview';
-    const model = rawModel === 'gemini-2.5-flash' ? 'gemini-3-flash-preview' : rawModel;
+    const rawModel = bodyObj.model || 'gemini-3.8-flash';
+    const model = rawModel === 'gemini-2.5-flash' ? 'gemini-3.8-flash' : rawModel;
     const contents = typeof bodyObj.contents === 'string'
       ? [{ parts: [{ text: bodyObj.contents }] }]
       : Array.isArray(bodyObj.contents) ? bodyObj.contents : [bodyObj.contents];
-    const upstreamUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
+    const upstreamUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
     try {
       const upstream = await fetch(upstreamUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': apiKey },
-        body: JSON.stringify({ contents, generationConfig: bodyObj.config }),
+        headers: {
+          'Content-Type': 'application/json',
+          'x-goog-api-key': apiKey,
+        },
+        body: JSON.stringify({
+          contents,
+          systemInstruction: bodyObj.systemInstruction ? {
+            parts: [{ text: bodyObj.systemInstruction }]
+          } : undefined,
+          generationConfig: bodyObj.config,
+        }),
       });
       const data = await upstream.json();
       const text = data?.candidates?.[0]?.content?.parts?.map((p) => p.text || '').join('') || '';
