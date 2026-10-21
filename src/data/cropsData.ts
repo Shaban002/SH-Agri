@@ -90,7 +90,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'دليل حماية القمح من الأصداء والآفات', organization: 'الإدارة المركزية للإرشاد الزراعي - وزارة الزراعة المصرية', year: '2024' },
     ],
     reviewDate: 'نوفمبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/crop_wheat_harvest_1792615518937.jpg',
+    image: '/images/crop_wheat_harvest_1792615518937.jpg',
   },
 
   {
@@ -178,7 +178,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'دليل المكافحة المتكاملة لآفات البرسيم والحامول', organization: 'مركز البحوث الزراعية المصرية', year: '2023' },
     ],
     reviewDate: 'أكتوبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/crop_berseem_clover_1792615518989.jpg',
+    image: '/images/crop_berseem_clover_1792615518989.jpg',
   },
 
   {
@@ -262,7 +262,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'توصيات إدارة محاصيل العلف بالأراضي الرملية والمستصلحة', organization: 'مركز بحوث الصحراء - مصر', year: '2024' },
     ],
     reviewDate: 'نوفمبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/crop_berseem_clover_1792615518989.jpg',
+    image: '/images/crop_berseem_clover_1792615518989.jpg',
   },
 
   {
@@ -353,7 +353,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'بروتوكول المكافحة المتكاملة لدودة الحشد الخريفية في مصر', organization: 'لجنة مبيدات الآفات الزراعية (APC) - وزارة الزراعة', year: '2024' },
     ],
     reviewDate: 'مايو 2024 (معتمد رسمي)',
-    image: '/src/assets/images/crop_maize_field_1792615519160.jpg',
+    image: '/images/crop_maize_field_1792615519160.jpg',
   },
 
   {
@@ -440,7 +440,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'دليل ترشيد مياه الري ومكافحة آفات الأرز', organization: 'وزارة الموارد المائية والري ومركز البحوث الزراعية', year: '2024' },
     ],
     reviewDate: 'أبريل 2024 (معتمد رسمي)',
-    image: '/src/assets/images/hero_egypt_agriculture_1792615520068.jpg',
+    image: '/images/crop_rice_field_egypt_1792621145273.jpg',
   },
 
   {
@@ -526,7 +526,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'التوصيات المعتمدة لمكافحة هالوك الفول والتبقع البني', organization: 'لجنة مبيدات الآفات الزراعية بمصر', year: '2024' },
     ],
     reviewDate: 'أكتوبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/hero_egypt_agriculture_1792615520068.jpg',
+    image: '/images/crop_faba_bean_1792621209250.jpg',
   },
 
   {
@@ -614,7 +614,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'البرنامج القومي لمكافحة ديدان اللوز وآفات القطن', organization: 'لجنة مبيدات الآفات الزراعية - وزارة الزراعة', year: '2024' },
     ],
     reviewDate: 'مارس 2024 (معتمد رسمي)',
-    image: '/src/assets/images/hero_egypt_agriculture_1792615520068.jpg',
+    image: '/images/crop_cotton_egypt_1792621197859.jpg',
   },
 
   {
@@ -703,7 +703,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'نشرة التسميد المتوازن وعنصر البورون في بنجر السكر', organization: 'معهد بحوث الأراضي والمياه والبيئة (SWERI)', year: '2023' },
     ],
     reviewDate: 'أغسطس 2024 (معتمد رسمي)',
-    image: '/src/assets/images/hero_egypt_agriculture_1792615520068.jpg',
+    image: '/images/crop_sugar_beet_1792621220462.jpg',
   },
 
   {
@@ -781,7 +781,7 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'نشرة المحاصيل البقولية الشتوية بمصر', organization: 'معهد بحوث المحاصيل الحقلية - مركز البحوث الزراعية', year: '2023' },
     ],
     reviewDate: 'أكتوبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/hero_egypt_agriculture_1792615520068.jpg',
+    image: '/images/crop_faba_bean_1792621209250.jpg',
   },
 
   {
@@ -858,6 +858,6 @@ export const CROPS_DATABASE: Crop[] = [
       { source: 'نشرة التوصيات الفنية لمحصول الشعير في الأراضي الجديدة والمطرية', organization: 'مركز البحوث الزراعية - معهد بحوث المحاصيل الحقلية', year: '2023' },
     ],
     reviewDate: 'نوفمبر 2024 (معتمد رسمي)',
-    image: '/src/assets/images/crop_wheat_harvest_1792615518937.jpg',
+    image: '/images/crop_wheat_harvest_1792615518937.jpg',
   },
 ];

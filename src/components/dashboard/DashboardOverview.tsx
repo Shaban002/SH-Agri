@@ -57,7 +57,7 @@ export const DashboardOverview: React.FC<DashboardProps> = ({
       <div className="relative rounded-2xl overflow-hidden bg-slate-900 text-white shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="absolute inset-0">
           <img
-            src="/src/assets/images/hero_egypt_agriculture_1792615520068.jpg"
+            src="/images/hero_egypt_agriculture_1792615520068.jpg"
             alt="حقول زراعية مصرية خضراء في الدلتا"
             className="w-full h-full object-cover opacity-35"
             referrerPolicy="no-referrer"
@@ -65,44 +65,44 @@ export const DashboardOverview: React.FC<DashboardProps> = ({
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30" />
         </div>
 
-        <div className="relative max-w-4xl px-6 py-10 sm:px-10 sm:py-14 space-y-6">
+        <div className="relative max-w-4xl px-4 py-8 sm:px-10 sm:py-14 space-y-5 sm:space-y-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs text-emerald-400 font-medium">
+            <div className="flex flex-wrap items-center gap-2 text-xs text-emerald-400 font-medium">
               <span>جمهورية مصر العربية</span>
               <span aria-hidden="true">·</span>
               <span>مركز البحوث الزراعية & وزارة الزراعة</span>
-              <span aria-hidden="true">·</span>
-              <span>الموسم الزراعي 2024-2025</span>
+              <span aria-hidden="true" className="hidden sm:inline">·</span>
+              <span className="hidden sm:inline">الموسم الزراعي 2024-2025</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-snug">
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white leading-snug">
               منصة المساعد والمهندس الزراعي الذكي في مصر
             </h1>
-            <p className="text-sm sm:text-base text-slate-200 leading-relaxed max-w-2xl">
+            <p className="text-xs sm:text-base text-slate-200 leading-relaxed max-w-2xl">
               مرجعك الرقمي الموثق: إدارة المحاصيل، مكافحة الآفات والحشائش، حسابات التسميد العلمية، ترشيد مياه الري، ومتابعة حشات البرسيم وفق النشرات الرسمية المعتمدة.
             </p>
           </div>
 
           {/* Quick Question / RAG Input Bar */}
           <form onSubmit={handleSearchSubmit} className="max-w-2xl">
-            <div className="relative flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-md p-1.5 focus-within:ring-2 focus-within:ring-emerald-500">
-              <Search className="w-5 h-5 text-slate-400 mr-2.5 shrink-0" />
+            <div className="relative flex items-center bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-md p-1.5 focus-within:ring-2 focus-within:ring-emerald-500 min-w-0">
+              <Search className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 mr-2 shrink-0" />
               <input
                 type="text"
                 value={quickQuery}
                 onChange={(e) => setQuickQuery(e.target.value)}
-                placeholder="اسأل عن أي محصول، مرض، آفة، أو جرعة سماد (مثلاً: أزرع قمح في الأقصر، ما موعد رية المحاياة؟)"
-                className="w-full bg-transparent text-slate-900 dark:text-white text-xs sm:text-sm px-2 py-2 focus:outline-none placeholder:text-slate-400"
+                placeholder="اسأل عن أي محصول، مرض، آفة، أو جرعة سماد..."
+                className="w-full min-w-0 bg-transparent text-slate-900 dark:text-white text-xs sm:text-sm px-2 py-2 focus:outline-none placeholder:text-slate-400"
               />
               <button
                 type="submit"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2.5 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg transition-colors whitespace-nowrap shrink-0 flex items-center gap-1.5"
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>استشر الآن</span>
+                <span className="hidden xs:inline sm:inline">استشر الآن</span>
               </button>
             </div>
-            <div className="flex items-center gap-2 mt-2 text-[11px] text-slate-300">
-              <span className="text-emerald-400 font-medium">أسئلة شائعة:</span>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 mt-2.5 text-[11px] text-slate-300">
+              <span className="text-emerald-400 font-medium shrink-0">أسئلة شائعة:</span>
               <button
                 type="button"
                 onClick={() => {

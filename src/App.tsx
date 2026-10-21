@@ -91,7 +91,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors" dir="rtl">
+    <div className="min-h-screen w-full flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors overflow-x-hidden" dir="rtl">
       {/* Universal Navigation Header with Dark Mode Toggle */}
       <Header
         activeTab={activeTab}
@@ -101,7 +101,7 @@ export function App() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 sm:py-8 min-w-0 overflow-x-hidden">
         {activeTab === 'dashboard' && (
           <DashboardOverview
             weather={weather}

@@ -27,34 +27,34 @@ export const CropDetailModal: React.FC<CropDetailModalProps> = ({
   if (!crop) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-4xl max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-auto transition-colors">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/70 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-white dark:bg-slate-900 rounded-2xl w-full max-w-4xl max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden my-auto transition-colors min-w-0">
         {/* Header Bar */}
-        <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-sm">
+        <div className="flex items-center justify-between p-3.5 sm:p-5 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 gap-2 min-w-0">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shadow-sm shrink-0">
               <Wheat className="w-5 h-5" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-slate-900 dark:text-white">{crop.nameAr}</h2>
-                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 italic">({crop.scientificName})</span>
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-baseline gap-1.5">
+                <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white truncate">{crop.nameAr}</h2>
+                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 italic hidden xs:inline sm:inline">({crop.scientificName})</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
-                <span>{crop.categoryAr}</span>
+              <div className="flex items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                <span className="truncate">{crop.categoryAr}</span>
                 <span aria-hidden="true">·</span>
-                <span>تاريخ التحديث: {crop.reviewDate}</span>
+                <span className="whitespace-nowrap">تحديث: {crop.reviewDate}</span>
               </div>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <button
               onClick={() => onAskAboutCrop(crop.nameAr)}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition-colors"
+              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition-colors whitespace-nowrap"
             >
               <Sparkles className="w-3.5 h-3.5" />
-              <span>اسأل الخبير عن {crop.nameAr}</span>
+              <span>اسأل الخبير</span>
             </button>
             <button
               onClick={onClose}
@@ -67,7 +67,7 @@ export const CropDetailModal: React.FC<CropDetailModalProps> = ({
         </div>
 
         {/* Tab Buttons (Segmented Controls) */}
-        <div className="flex items-center gap-1 p-2 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 overflow-x-auto text-xs">
+        <div className="flex items-center gap-1 p-2 bg-slate-100 dark:bg-slate-800/80 border-b border-slate-200 dark:border-slate-800 overflow-x-auto text-xs min-w-0">
           {[
             { id: 'overview', label: 'نظرة عامة والأصناف' },
             { id: 'planting', label: 'المواعيد والتربة والتقاوي' },
@@ -91,9 +91,26 @@ export const CropDetailModal: React.FC<CropDetailModalProps> = ({
         </div>
 
         {/* Modal Body */}
-        <div className="p-5 sm:p-6 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
           {activeTab === 'overview' && (
             <div className="space-y-5">
+              {crop.image && (
+                <div className="rounded-xl overflow-hidden h-40 sm:h-52 relative border border-slate-200 dark:border-slate-800 shadow-sm">
+                  <img
+                    src={crop.image}
+                    alt={crop.nameAr}
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 right-3 text-white">
+                    <span className="text-xs bg-emerald-600/90 backdrop-blur-sm px-2.5 py-1 rounded-md font-medium shadow-sm">
+                      {crop.nameAr} — {crop.categoryAr}
+                    </span>
+                  </div>
+                </div>
+              )}
+
               <div>
                 <h3 className="font-bold text-slate-900 dark:text-white text-sm mb-2">نبذة عن المحصول وأهميته</h3>
                 <p className="bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 leading-relaxed">

@@ -234,6 +234,26 @@ const server = http.createServer(async (req, res) => {
     let stats = await getStats(absolutePath);
     if (stats) return serveFile(absolutePath, stats);
 
+    // 1b. Image Fallback Resolution (handles /images/* and cached /src/assets/images/*)
+    if (decodedPath.startsWith('/images/')) {
+      const publicImgPath = path.join(__dirname, 'public', decodedPath);
+      stats = await getStats(publicImgPath);
+      if (stats) return serveFile(publicImgPath, stats);
+
+      const srcImgPath = path.join(__dirname, 'src', 'assets', decodedPath);
+      stats = await getStats(srcImgPath);
+      if (stats) return serveFile(srcImgPath, stats);
+    } else if (decodedPath.startsWith('/src/assets/images/')) {
+      const imgFile = path.basename(decodedPath);
+      const publicImgPath = path.join(__dirname, 'public', 'images', imgFile);
+      stats = await getStats(publicImgPath);
+      if (stats) return serveFile(publicImgPath, stats);
+
+      const srcImgPath = path.join(__dirname, 'src', 'assets', 'images', imgFile);
+      stats = await getStats(srcImgPath);
+      if (stats) return serveFile(srcImgPath, stats);
+    }
+
     // 2. HTML Extension (Next.js Export: /about -> /about.html)
     const htmlPath = absolutePath + '.html';
     stats = await getStats(htmlPath);
